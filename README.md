@@ -11,4 +11,4 @@ You can also run will2yaml.py to get an intermediate file in YAML (YAML Ain't Ma
 
 
 # Disclaimer
-Only tested with WILL files exported from Wacom Bamboo Slate S A5.
+Only tested with WILL files exported from Wacom Bamboo Slate S A5, as well as A4.
