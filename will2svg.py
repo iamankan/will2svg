@@ -11,11 +11,12 @@ if len(sys.argv) < 2:
     print("{0} infile.will".format(sys.argv[0]))
     exit()
 else:
-    temp = tempfile.NamedTemporaryFile(mode = 'w', delete = False)
     _pages = getPages(will_filename= sys.argv[1])
     print('{} contains {} pages...'.format(sys.argv[1], len(_pages)))
     for _page in _pages:
         print(_page)
+
+        temp = tempfile.NamedTemporaryFile(mode='w', delete=False)
 
         temp.write(will2yaml(will_filename=sys.argv[1], protobufName=_page))
 
@@ -32,7 +33,8 @@ else:
         f = open(_svgFileName, 'w')
         f.write(yaml2svg(yaml_filename=temp.name, width=w, height=h, matrix=mat))
         f.close()
-    temp.close()
+        temp.close()
+        
     os.unlink(temp.name)
     print('Finished!')
     

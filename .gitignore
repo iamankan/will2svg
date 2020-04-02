@@ -8,3 +8,7 @@
 *.svg
 *.SVG
 
+*.pyc
+*.xml
+*.iml
+*.gitignore
