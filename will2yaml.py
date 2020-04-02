@@ -165,12 +165,21 @@ def protobuf2yaml(data):
 
 
 
-
-def will2yaml(will_filename):
-    data = array('B')
+def getPages(will_filename):
     with ZipFile(will_filename) as will:
         r = re.compile("sections/media/.+\.protobuf")
-        strokes_protobuf = list(filter(r.match, will.namelist()))[0]
+        return list(filter(r.match, will.namelist()))
+
+
+
+def will2yaml(will_filename, protobufName):
+    data = array('B')
+    with ZipFile(will_filename) as will:
+        # r = re.compile("sections/media/.+\.protobuf")
+        # all_pages = list(filter(r.match, will.namelist()))
+        # strokes_protobuf = all_pages[0]
+        strokes_protobuf = protobufName
+        print('strokes_protobuf: ',strokes_protobuf)
         info = will.getinfo(strokes_protobuf)
         with will.open(strokes_protobuf) as protobuf:
             data.fromfile(protobuf, info.file_size)
